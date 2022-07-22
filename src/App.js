@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
+import About from './pages/About';
+import AddEditBlog from './pages/AddEditBlog';
+import Detail from './pages/Detail';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+      <ToastContainer />
+			<Routes>
+				<Route path="/" element={<Home />} exact />
+				<Route path="/about" element={<About />} exact />
+				<Route path="/detail/:id" element={<Detail />} />
+				<Route path="/create" element={<AddEditBlog />} />
+				<Route path="/update/:id" element={<AddEditBlog />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
